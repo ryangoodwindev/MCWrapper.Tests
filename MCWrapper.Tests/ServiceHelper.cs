@@ -5,13 +5,11 @@ namespace MCWrapper.Tests
 {
     public static class ServiceHelper
     {
-        private static readonly IServiceCollection Services;
+        private static readonly IServiceCollection Services = new ServiceCollection();
         private static readonly ServiceProvider ServiceProvider;
 
         static ServiceHelper()
         {
-            Services = new ServiceCollection();
-
             Services.AddMultiChainCoreServices();
 
             if (ServiceProvider == null)

@@ -20,11 +20,9 @@ namespace MCWrapper.Tests
         public async Task GetBlockchainInfoTest()
         {
             // Act - Request Blockchain information object
-            var rpcResponse = await ClientFactory.RpcClients
-                .GetBlockchainRpcClient().GetBlockchainInfoAsync();
+            var rpcResponse = await ClientFactory.RpcClients.BlockchainRpcClient.GetBlockchainInfoAsync();
 
-            var cliResponse = await ClientFactory.CliClients
-                .GetBlockchainClient().GetBlockchainInfoAsync();
+            var cliResponse = await ClientFactory.CliClients.BlockchainCliClient.GetBlockchainInfoAsync();
 
             // Assert (Type and null assertions)
             Assert.IsInstanceOf(typeof(RpcResponse<GetBlockchainInfoResult>), rpcResponse);

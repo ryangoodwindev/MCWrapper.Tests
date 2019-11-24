@@ -10,19 +10,19 @@ namespace MCWrapper.Tests
     [TestFixture]
     public class GetBlockchainInfoTests
     {
-        private MCWrapperClientFactory ClientFactory;
+        private IMultiChainClientFactory ClientFactory;
 
         [SetUp]
         public void Startup() => 
-            ClientFactory = ServiceHelper.GetService<MCWrapperClientFactory>();
+            ClientFactory = ServiceHelper.GetService<IMultiChainClientFactory>();
 
         [Test]
         public async Task GetBlockchainInfoTest()
         {
             // Act - Request Blockchain information object
-            var rpcResponse = await ClientFactory.RpcClients.BlockchainRpcClient.GetBlockchainInfoAsync();
+            var rpcResponse = await ClientFactory.MultiChainRpcClients.MultiChainRpcGeneralClient.GetBlockchainInfoAsync();
 
-            var cliResponse = await ClientFactory.CliClients.BlockchainCliClient.GetBlockchainInfoAsync();
+            var cliResponse = await ClientFactory.MultiChainCliClients.MultiChainCliGeneralClient.GetBlockchainInfoAsync();
 
             // Assert (Type and null assertions)
             Assert.IsInstanceOf(typeof(RpcResponse<GetBlockchainInfoResult>), rpcResponse);
